@@ -1,0 +1,2 @@
+  mCurrentFocus=Window{9a1b2c u0 com.example.notes/com.example.notes.ui.MainActivity}
+  mShowingLockscreen=true

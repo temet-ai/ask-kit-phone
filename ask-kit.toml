@@ -1,0 +1,40 @@
+id = "temet.phone"
+name = "phone"
+version = "0.1.0"
+min_ask_kit = "0.2.0"
+platforms = ["linux"]
+requires = ["adb"]
+says = "an Android phone reached over adb (USB or wireless, the device set by the PHONE_SERIAL setting or the first one connected) as it is right now: whether it is connected and how, which app and activity is in the foreground, what elements are on the screen with their text, ids and positions, which apps are installed and at which version, battery, storage, Android version and screen state, an app's recent errors and crashes from logcat, whether an app under development is installed, at which version, and what its last crash was; and operating it (tap, swipe, type, press a key, open an app or a deep link, install or uninstall an APK, take a screenshot to a file, show the phone in a window on the desktop with scrcpy)"
+keywords = ["phone", "android", "adb", "scrcpy", "logcat", "uiautomator", "apk", "wireless debugging", "on (my|the) phone", "phone screen", "installed apps?", "app crash(ed)?", "tap|swipe"]
+route_hint = "the live state of the Android phone (connection, foreground app, screen elements, installed apps and versions, battery, storage, logcat of one app) and operating it (tap, swipe, type, keys, open, install, screenshot, scrcpy) is phone; the Linux desktop and its windows is desktop; a web page is browser; building or editing the Android app's code (Gradle, Kotlin, tests on this machine) is code or the session's own job; what a past session did with the phone is mike or sessions"
+cite = "the script and field the answer came from (status.battery.level, screen row, app.versionName), a package name, or a screenshot path"
+instructions = "instructions.md"
+bench = "bench/questions.json"
+acts = [
+  "phone.tap, phone.swipe, phone.type, phone.key, phone.wake (the screen, through adb input)",
+  "phone.open (an app or a deep link), phone.install, phone.uninstall (apps)",
+  "phone.screenshot (a file on disk), phone.scrcpy (a window on the desktop)",
+  "phone.shell for any adb shell command outside the fixed read set (dumpsys battery, window, power and package, pm list packages, getprop of a fixed list, df, pidof, logcat -d with a package filter and a line cap)",
+]
+
+[[settings]]
+key = "PHONE_SERIAL"
+about = "the adb serial of the phone to use, as `adb devices` lists it (a USB serial or a host:port for a wireless one); when it is a host:port the kit also uses it to reconnect. By default the first connected device, a wireless one first"
+
+[[sources]]
+kind = "module"
+name = "phone"
+module = "phone.mjs"
+api = "api.d.ts"
+
+[[roles]]
+name = "phone-observer"
+when = "a question about the phone's state: connected, foreground app, what is on the screen, installed apps and versions, battery, storage, an app's logcat errors or last crash"
+patterns = ["\\b(phone|android)\\b.*\\b(connected|battery|storage|version|installed|foreground|screen|showing|crash(ed)?|logcat|apps?|open)\\b", "\\bis .* installed\\b.*\\bphone\\b"]
+instructions = "roles/phone-observer.md"
+
+[[roles]]
+name = "phone-operator"
+when = "a request to do something on the phone: tap, swipe, type, press a key, open an app or link, install or uninstall an APK, take a screenshot, show the phone in a window"
+patterns = ["^(please )?(tap|swipe|type|press|open|install|uninstall|screenshot|show|wake|click|scroll)\\b.*\\b(phone|android|app|apk)\\b"]
+instructions = "roles/phone-operator.md"

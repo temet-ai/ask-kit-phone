@@ -1,0 +1,6 @@
+--------- beginning of main
+11-20 10:00:01.100 10321 10321 E NotesSync: sync failed: timeout after 30000 ms
+11-20 10:00:09.200 10321 10321 E NotesSync: sync failed: timeout after 30001 ms
+11-20 10:00:11.300 10321 10321 W Choreographer: skipped 41 frames
+11-20 10:00:12.400 10321 10321 I NotesApp: started
+11-20 10:00:13.500 10321 10321 E NotesApp: contact sam@example.com failed code 482913

@@ -1,0 +1,2 @@
+  mCurrentFocus=Window{9a1b2c u0 com.whatsapp/com.whatsapp.Conversation}
+  mFocusedApp=ActivityRecord{81b3d2 u0 com.whatsapp/.Conversation t42}

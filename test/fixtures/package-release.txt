@@ -1,0 +1,11 @@
+Packages:
+  Package [com.example.tool] (aa11bb2):
+    userId=10400
+    versionCode=7 minSdk=24 targetSdk=33
+    versionName=2.0
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    installerPackageName=com.android.vending
+    requested permissions:
+      android.permission.INTERNET
+    firstInstallTime=2025-01-02 03:04:05
+    lastUpdateTime=2026-06-07 08:09:10
