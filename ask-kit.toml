@@ -1,6 +1,6 @@
 id = "temet.phone"
 name = "phone"
-version = "0.1.0"
+version = "0.1.1"
 min_ask_kit = "0.2.0"
 platforms = ["linux"]
 requires = ["adb"]
@@ -16,6 +16,7 @@ acts = [
   "phone.screenshot (a file on disk), phone.scrcpy (a window on the desktop)",
   "phone.shell for any adb shell command outside the fixed read set (dumpsys battery, window, power and package, pm list packages, getprop of a fixed list, df, pidof, logcat -d with a package filter and a line cap)",
 ]
+reads = ["adb devices", "adb logcat", "adb shell dumpsys", "adb shell pm list"]
 
 [[settings]]
 key = "PHONE_SERIAL"
